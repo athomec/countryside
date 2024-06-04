@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13">
+  <g id="ic-print" transform="translate(0 -1)">
+    <path id="Path_4995" data-name="Path 4995" d="M5,1A2,2,0,0,0,3,3V4H13V3a2,2,0,0,0-2-2Zm6,8H5a1,1,0,0,0-1,1v3a1,1,0,0,0,1,1h6a1,1,0,0,0,1-1V10a1,1,0,0,0-1-1" fill="#bf0c0c"/>
+    <path id="Path_4996" data-name="Path 4996" d="M0,7A2,2,0,0,1,2,5H14a2,2,0,0,1,2,2v3a2,2,0,0,1-2,2H13V10a2,2,0,0,0-2-2H5a2,2,0,0,0-2,2v2H2a2,2,0,0,1-2-2ZM2.5,8A.5.5,0,1,0,2,7.5a.5.5,0,0,0,.5.5" fill="#bf0c0c"/>
+  </g>
+</svg>
