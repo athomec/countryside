@@ -46,7 +46,7 @@
                         class="me-2">首頁</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="website.html" title="網站導覽"><img src="./assets/images/ic-sitemap.svg" alt="icon"
+                <a class="nav-link" href="#" title="網站導覽"><img src="./assets/images/ic-sitemap.svg" alt="icon"
                         class="me-2">網站導覽</a>
             </li>
             <li class="nav-item px-2 px-xl-4 d-none d-md-flex">
@@ -121,7 +121,7 @@
 						title="請輸入關鍵字">
 					<div class="mb-2">
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="checkbox" id="difference" value="option1">
+							<input class="form-check-input" type="checkbox" id="difference" value="option1" title="差集查詢(NOT)">
 							<label class="form-check-label" for="difference">差集查詢(NOT)</label>
 						</div>
 					</div>
@@ -242,7 +242,8 @@
 				</ul>
 				<div class="page-info fs-7">
 					<span>共 120筆，每頁顯示</span>
-					<input type="text" class="mx-2 rounded-pill" value="10">
+					<label class="visually-hidden" for="num">筆數</label>
+					<input type="text" class="mx-2 rounded-pill" value="10" id="num" title="筆數">
 					<span>筆</span>
 				</div>
 			</div>
