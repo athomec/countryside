@@ -17637,7 +17637,8 @@ input[readonly] {
   background: #fff;
   -webkit-box-shadow: 0 3px 6px #ced4da;
           box-shadow: 0 3px 6px #ced4da;
-  padding: 16px 24px; }
+  padding: 16px 24px;
+  color: #212529; }
   @media (max-width: 768px) {
     .header-title {
       padding: 12px 24px; } }
