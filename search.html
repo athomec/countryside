@@ -142,8 +142,7 @@
 						<div class="form-group w-100">
 							<div class="input-group date" id="time-start" data-target-input="nearest">
 								<input type="text"
-									class="form-control datetimepicker-input border-end-0 rounded-start-3"
-									data-target="#time-start" title="請點選或輸入起始時間" data-toggle="datetimepicker">
+									class="form-control datetimepicker-input border-end-0 rounded-start-3" data-target="#time-start" title="請點選或輸入起始時間" data-toggle="datetimepicker">
 								<div class="input-group-append" data-target="#time-start" data-toggle="datetimepicker">
 									<button class="btn input-group-text rounded-end-3" title="點選展開日曆" value="點選展開日曆">
 										<img src="./assets/images/ic-calendar.svg" alt="icon">
@@ -155,8 +154,7 @@
 						<div class="form-group w-100">
 							<div class="input-group date" id="time-end" data-target-input="nearest">
 								<input type="text"
-									class="form-control datetimepicker-input border-end-0 rounded-start-3"
-									data-target="#time-end" title="請點選或輸入起始時間" data-toggle="datetimepicker">
+									class="form-control datetimepicker-input border-end-0 rounded-start-3" data-target="#time-end" title="請點選或輸入起始時間" data-toggle="datetimepicker">
 								<div class="input-group-append" data-target="#time-end" data-toggle="datetimepicker">
 									<button class="btn input-group-text rounded-end-3" title="點選展開日曆" value="點選展開日曆">
 										<img src="./assets/images/ic-calendar.svg" alt="icon">
@@ -390,8 +388,8 @@
 <script src='assets/js/jquery-ui.min.js'></script>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/slick.js"></script>
-<script src="assets/js/moment-with-locales.min.js"></script>
-<script src="assets/js/tempusdominus-bootstrap-4.js"></script>
+<script src="assets/js/bootstrap-datepicker.js"></script>
+<script src="assets/js/bootstrap-datepicker.zh-TW.min.js"></script>
 <script src="assets/js/select2.min.js"></script>
 <script src="assets/js/index.global.js"></script><!--行事曆-->
 <script src="assets/js/script.js"></script><!--自訂-->
@@ -403,7 +401,7 @@
             WINDOWH = $(window).height();
             WINDOW = $(window).width();
             if (WINDOW < 769) {
-               $('.js-link-card-list').slick({
+                $('.js-link-card-list').slick({
                     speed: 300,
                     slidesToShow: 1,
                     slidesToScroll: 1,
@@ -430,163 +428,26 @@
 
         //下拉輸入選單
         $('.js-input-select').select2();
+        //民國時間
+       var today = new Date();
 
-        //時間表單
-        var datetimepickerOptions = {
-            locale: 'zh-tw',
-            defaultDate: new Date(),
-            format: 'L',
-            icons: {
-                time: "bi bi-clock",
-                date: "bi bi-calendar",
-                up: "bi bi-arrow-up",
-                down: "bi bi-arrow-down",
-                previous: "bi bi-chevron-left",
-                next: "bi bi-chevron-right",
-                today: "bi bi-clock",
-                clear: "bi bi-trash3"
-            }
-        };
-        $('#time-start').datetimepicker(datetimepickerOptions);
-        $('#time-end').datetimepicker(datetimepickerOptions);
-        //時間範圍表單
-        var datetimepickerRange = {
-            locale: 'zh-tw',
-            //defaultDate: new Date(),
-            format: 'L',
-            allowMultidate: true,
-            multidateSeparator: '~',
-            icons: {
-                time: "bi bi-clock",
-                date: "bi bi-calendar",
-                up: "bi bi-arrow-up",
-                down: "bi bi-arrow-down",
-                previous: "bi bi-chevron-left",
-                next: "bi bi-chevron-right",
-                today: "bi bi-clock",
-                clear: "bi bi-trash3"
-            }
-        };
-        $('#time-range').datetimepicker(datetimepickerRange);
-        $('#time-range1').datetimepicker(datetimepickerRange);
+        function initializeDatePicker(selector) {
+            return $(selector).datepicker({
+                format: "twy-mm-dd",
+                language: "zh-TW",
+                showOnFocus: true,
+                todayHighlight: true
+            }).on("show", function (e) {
+                $("div.box").css({ minHeight: "480px" });
+            }).on("hide", function (e) {
+                $("div.box").css({ minHeight: "auto" });
+            }).datepicker('setDate', today);
+        }
 
-        var today1 = moment(); // 第一個今天的日期
-        var today2 = moment(); // 第二個今天的日期
-
-
-        //自動開啟完成視窗
-        const myModalEl = document.getElementById('done');
-        setTimeout(function () {
-            const bsModal = new bootstrap.Modal(myModalEl);
-            bsModal.show();
-        }, 2000);
+        // 在不同的 <div> 中呼叫日期選擇器初始化函式
+        var startUpDatePicker1 = initializeDatePicker("#time-start");
+        var startUpDatePicker2 = initializeDatePicker("#time-end");
     });
-</script>
-<script>
-//行事曆設定
-    document.addEventListener('DOMContentLoaded', function () {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            locale: 'zh-tw',//中文設定
-            buttonText: {
-                today: '今天',
-                month: '月',
-                week: '周',
-                day: '日',
-            },
-            headerToolbar: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,dayGridWeek,dayGridDay'
-            },
-            initialDate: '2023-10-12',
-            navLinks: true, // can click day/week names to navigate views
-            editable: true,
-            dayMaxEvents: true, // allow "more" link when too many events
-            events: [
-                {
-                    title: '未開放預約',
-                    start: '2023-10-09T13:30:00',
-                    display: 'block',
-                    borderColor: '#746D6D',
-                    backgroundColor: '#746D6D'
-                },
-                {
-                    title: '已結束預約',
-                    start: '2023-10-03T20:30:00',
-                    display: 'block',
-                    borderColor: '#746D6D',
-                    backgroundColor: '#746D6D'
-                },
-                {
-                    title: '可預約',
-                    start: '2023-10-20T20:20:00',
-                    display: 'block',
-                    borderColor: '#057E01',
-                    backgroundColor: '#057E01',
-                    url: 'reservation-detail.html'
-                },
-                {
-                    title: '可預約',
-                    start: '2023-10-12T17:30:00',
-                    display: 'block',
-                    borderColor: 'green',
-                    backgroundColor: 'green',
-                    url: 'reservation-detail.html'
-                },
-                {
-                    title: '未開放預約',
-                    start: '2023-10-20T20:30:00',
-                    display: 'block',
-                    borderColor: '#746D6D',
-                    backgroundColor: '#746D6D'
-                },
-                {
-                    title: '可預約',
-                    start: '2023-10-12T19:20:00',
-                    display: 'block',
-                    borderColor: '#057E01',
-                    backgroundColor: '#057E01',
-                    url: 'reservation-detail.html'
-                },
-                {
-                    title: '已額滿',
-                    start: '2023-10-12T18:00:00',
-                    display: 'block',
-                    borderColor: '#DB0909',
-                    backgroundColor: '#DB0909'
-                },
-                 {
-                    title: '可預約',
-                    start: '2023-10-12T21:20:00',
-                    display: 'block',
-                    borderColor: '#057E01',
-                    backgroundColor: '#057E01',
-                    url: 'reservation-detail.html'
-                },
-                {
-                    title: '已額滿',
-                    start: '2023-10-13T09:00:00',
-                    display: 'block',
-                    borderColor: '#DB0909',
-                    backgroundColor: '#DB0909'
-                },
-                {
-                    title: '可預約',
-                    start: '2023-10-15T17:30:00',
-                    display: 'block',
-                    borderColor: 'green',
-                    backgroundColor: 'green',
-                    url: 'reservation-detail.html'
-                }
-            ],
-            eventColor: '#378006'
-        });
-
-        calendar.render();
-        $(".js-calendar").find("a").attr("title","看更多");
-    });
-
 </script>
 	</body>
 
