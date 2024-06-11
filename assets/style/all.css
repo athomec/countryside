@@ -19493,12 +19493,12 @@ input[readonly] {
       padding: 0 8px;
       text-align: center; }
   .page-link {
-    border-radius: 50% !important;
+    border-radius: 100px !important;
     background: #fff;
     border: 1px solid #21856A;
+    padding: 0 4px;
     color: #21856A;
-    padding: 0;
-    width: 26px;
+    min-width: 26px;
     height: 26px;
     display: -webkit-box;
     display: -ms-flexbox;
